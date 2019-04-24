@@ -279,6 +279,10 @@ def Play():
               'Username', 'Transienttoken', 'Queueid', 'Version', 'Primaryserverid',
               'Primaryserveruri', 'Primaryservertoken']
     values = sort_headers(params, False)
+    # ensure we have a key for every required header
+    default_headers = dict((key, '') for key in params)
+    default_headers.update(values)
+    values = default_headers
     status = "Missing required headers and stuff"
     msg = status
 
